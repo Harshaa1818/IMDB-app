@@ -1,0 +1,13 @@
+.Navbar-container{
+    display: flex;
+    justify-content: space-between;
+}
+ul li{
+    list-style: none;
+    cursor: pointer;
+    
+}
+ul{
+    display: flex;
+    gap: 10px;
+}

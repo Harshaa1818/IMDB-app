@@ -1,0 +1,12 @@
+.table-head{
+    
+    
+    gap: 0px;
+}
+table{
+    display:flex;
+
+    flex-direction: column;
+    border:solid black ;
+    
+}
