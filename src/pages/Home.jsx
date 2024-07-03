@@ -5,23 +5,51 @@ import "./style.css";
 const HomePage = () => {
   const [res, setRes] = useState([]);
 
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMmUwZTA1OTg5ZGI0NDJmMzZmNzhlM2I4MjY4ZTQzOSIsIm5iZiI6MTcxOTg1ODg4MC41NzAwMjQsInN1YiI6IjY2ODJlYTQzNzAxY2U4ZmMwZjNhZTYxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HdJ6iS61DXTl445XSf2D7u8lDxB5woS2ZCyJ5zNpAG4";
-  const ApiKey = "c2e0e05989db442f36f78e3b8268e439";
+  const[page,setPage]=useState(1);
+
+  const token ="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMmUwZTA1OTg5ZGI0NDJmMzZmNzhlM2I4MjY4ZTQzOSIsIm5iZiI6MTcxOTk0NTEyOC4wMzM3NCwic3ViIjoiNjY4MmVhNDM3MDFjZThmYzBmM2FlNjE5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.OVY6dSgbSoqI9SnDKxwbpxuOHyUdmKGFC3vLF-8ZcTk"
+   
   useEffect(() => {
     axios
-      .get("")
+      .get(`https://api.themoviedb.org/3/discover/movie?page=${page}`,
+        {
+        headers:{
+            Authorization:`Bearer ${token}`,
+            Accept:"application/json"
+        }})
       .then((e) => {
-        setRes([...res, e]); //preserve previous value in res
+        setRes(e.data); //preserve previous value in res
       })
       .catch((e) => console.log("error is ", e));
-  }, [res]);
+  }, [page]);
 
-  //console.log(res);
+  console.log(res);
 
+  const pageIncrement=()=>{
+    setPage(page+1);
+  }
  
   
-  return( <></>)
+  return( <>
+  <div className="movie-container">
+    {res.results?.map((movie)=>(
+        <card className="card">
+            <div className="content">
+        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+        <h4>{movie.title}</h4>
+        <h5>{movie.overview}</h5>
+            </div>
+        <div className="buttons">
+        <button>Add to fav</button>
+        <button>Watch Later</button>
+        </div>
+        </card>
+    ))}
+    <button onClick={pageIncrement}>Load More</button>
+   
+
+  </div>
+  </>)
   
 };
 
