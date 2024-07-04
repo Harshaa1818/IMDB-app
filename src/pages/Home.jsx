@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
+import FavMovie from "./Fav-Movie";
 
 const HomePage = () => {
   const [res, setRes] = useState([]);

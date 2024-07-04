@@ -22,6 +22,7 @@ function App() {
       <Route path='/contact' element={<ContactPage/>}></Route>
       <Route path='/Signin' element={<SignInPage/>}></Route>
       <Route path='/moneymul' element={<Moneymul/>}></Route>
+      <Route path="/fav-list" element={<>Fav-Movie</>}></Route>
       
 
     </Routes>
