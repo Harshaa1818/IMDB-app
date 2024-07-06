@@ -1,9 +1,10 @@
 import React from 'react'
 
-function FavMovie() {
+const FavMovie=(obj)=> {
   return (
     <div>
-      
+    
+      hey {obj.nam}
     </div>
   )
 }

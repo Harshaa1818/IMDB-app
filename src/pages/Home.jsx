@@ -19,7 +19,7 @@ const HomePage = () => {
             Accept:"application/json"
         }})
       .then((e) => {
-        setRes(e.data); //preserve previous value in res
+        setRes(prevRes => [...prevRes, ...e.data.results]);
       })
       .catch((e) => console.log("error is ", e));
   }, [page]);
@@ -33,7 +33,7 @@ const HomePage = () => {
   
   return( <>
   <div className="movie-container">
-    {res.results?.map((movie)=>(
+    {res?.map((movie)=>(
         <card className="card">
             <div className="content">
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
