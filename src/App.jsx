@@ -8,6 +8,7 @@ import AboutPage from "./pages/About"
 import ContactPage from "./pages/Contact"
 import SignInPage from "./pages/SignIn"
 import Moneymul from "./pages/Moneymul"
+import FavMovie from "./pages/Fav-Movie"
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <Route path='/contact' element={<ContactPage/>}></Route>
       <Route path='/Signin' element={<SignInPage/>}></Route>
       <Route path='/moneymul' element={<Moneymul/>}></Route>
-      <Route path="/fav-list" element={<>Fav-Movie</>}></Route>
+      <Route path="/fav-list" element={<FavMovie nam={'harshal'}/>}></Route>
       
 
     </Routes>
